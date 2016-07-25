@@ -49,7 +49,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunApplication.cs" />
     <Compile Include="Target.cs" />
+    <Compile Include="TargetDB.cs" />
     <Compile Include="TargetList.cs" />
+    <Compile Include="Telnet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

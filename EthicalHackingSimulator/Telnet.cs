@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace EthicalHackingSimulator
 {
-    public class TargetDB
+    public class Telnet
     {
-        public TargetDB()
+        public Telnet()
+        {
+            //TODO Implement
+        }
+
+        public void Connect()
         {
             //TODO Implement
         }

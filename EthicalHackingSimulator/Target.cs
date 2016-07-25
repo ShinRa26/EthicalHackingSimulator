@@ -10,6 +10,7 @@ namespace EthicalHackingSimulator
     {
         private const int MAX_IP = 255;
         private const int USABLE_PORTS = 34434;
+        public TargetDB db;
         public string ipAddress { get; set; }
         public bool isAlive { get; set; }
         public Dictionary<int, string> portsAndServices {get; set;}
@@ -20,14 +21,21 @@ namespace EthicalHackingSimulator
             this.ipAddress = GenerateIP();
             System.Threading.Thread.Sleep(25);
 
+            //Generates the ports and services for the Target
             portsAndServices = new Dictionary<int, string>();
             GeneratePortsAndServices(portsAndServices);
 
+            //generates the status of the ports for the Target
             portStatus = GeneratePortStatus(portsAndServices);
 
+            //Specifies if the target is online/offline
             isAlive = InitiateAliveStatus();
+
+            //Creates the Database for the target
+            db = InitiateDatabase(portsAndServices);
         }
 
+        //Generates an IP Address for the target.
         private string GenerateIP()
         {
             string ip = "";
@@ -44,6 +52,7 @@ namespace EthicalHackingSimulator
             return ip;
         }
 
+        //Generates the services running on the target and their assigned port numbers
         private Dictionary<int, string> GeneratePortsAndServices(Dictionary<int, string> ps)
         {
             Random r = new Random();
@@ -83,6 +92,7 @@ namespace EthicalHackingSimulator
             return ps;
         }
 
+        //Selects a set number of unique services
         private HashSet<string> SelectRandomServices()
         {
             List<string> serviceList = ListOfServices();            
@@ -96,6 +106,7 @@ namespace EthicalHackingSimulator
             return uniqueServices;
         }
 
+        //A list of all extra services that can be running on a target
         private List<string> ListOfServices()
         {
             List<string> sl = new List<string>();
@@ -112,6 +123,7 @@ namespace EthicalHackingSimulator
             return sl;
         }
 
+        //Generates the status of the ports (Open/Closed/Filtered)
         public Dictionary<int,string> GeneratePortStatus(Dictionary<int, string> ps)
         {
             Random r = new Random();
@@ -137,6 +149,7 @@ namespace EthicalHackingSimulator
             return ps;
         }
 
+        //Initiates the status of the Target (Online (Alive)/Offline(Dead))
         private bool InitiateAliveStatus()
         {
             bool status;
@@ -150,6 +163,22 @@ namespace EthicalHackingSimulator
                 status = false;
 
             return status;
+        }
+
+        //Initialises a "database" for the target if certain services are present on the target.
+        private TargetDB InitiateDatabase(Dictionary<int, string> ps)
+        {
+            for(int i = 0; i < ps.Count; i++)
+            {
+                try
+                {
+                    if (ps[i] == "MySQL_Database" || ps[i] == "Magneto" || ps[i] == "Drupal")
+                        return new TargetDB();
+                }
+                catch (Exception) { }
+            }
+
+            return null;
         }
     }
 }
