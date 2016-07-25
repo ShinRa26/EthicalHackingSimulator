@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace EthicalHackingSimulator
 {
-    public class Program
+    public interface ITerminal
     {
-        public static void Main(string[] args)
-        {
-            var runApp = new RunApplication();
-            runApp.StartApp();
-        }
+        void Terminal();
+        void PrintHelp();
     }
 }

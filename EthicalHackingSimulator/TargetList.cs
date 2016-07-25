@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace EthicalHackingSimulator
 {
-    public class Program
+    public class TargetList
     {
-        public static void Main(string[] args)
-        {
-            var runApp = new RunApplication();
-            runApp.StartApp();
-        }
+
     }
 }
