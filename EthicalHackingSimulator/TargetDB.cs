@@ -154,8 +154,7 @@ namespace EthicalHackingSimulator
             else if (chance == 2)
                 return choice3;
             else
-                return choice4;
-            return null;
+                return choice4;            
         }
     }
 }
