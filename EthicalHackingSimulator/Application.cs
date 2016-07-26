@@ -36,6 +36,7 @@ namespace EthicalHackingSimulator
             {
                 if (ip == t[i].ipAddress)
                     return t[i];
+                
             }
             return null;
         }

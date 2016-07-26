@@ -15,6 +15,7 @@ namespace EthicalHackingSimulator
         public bool isAlive { get; set; }
         public Dictionary<int, string> portsAndServices {get; set;}
         public Dictionary<int, string> portStatus { get; set; }
+        public bool remotelyConnected { get; set; }
 
         public Target()
         {
@@ -33,6 +34,9 @@ namespace EthicalHackingSimulator
 
             //Creates the Database for the target
             db = InitiateDatabase(portsAndServices);
+
+            //Initialised as False as no connection has been made
+            remotelyConnected = false;
         }
 
         //Generates an IP Address for the target.
@@ -86,6 +90,7 @@ namespace EthicalHackingSimulator
             HashSet<string> uniqueServices = SelectRandomServices();
             string[] uServices = new string[uniqueServices.Count];
             uniqueServices.CopyTo(uServices);
+
             for (int i = 0; i < uServices.Length; i++)
                 ps[r.Next(100, USABLE_PORTS)] = uServices[i]; 
 
@@ -168,14 +173,10 @@ namespace EthicalHackingSimulator
         //Initialises a "database" for the target if certain services are present on the target.
         private TargetDB InitiateDatabase(Dictionary<int, string> ps)
         {
-            for(int i = 0; i < ps.Count; i++)
+            for(int i = 0; i < USABLE_PORTS; i++)
             {
-                try
-                {
-                    if (ps[i] == "MySQL_Database" || ps[i] == "Magneto" || ps[i] == "Drupal")
-                        return new TargetDB();
-                }
-                catch (Exception) { }
+                if (ps.ContainsKey(i) && ps[i] == "MySQL_Database")
+                    return new TargetDB();                   
             }
 
             return null;

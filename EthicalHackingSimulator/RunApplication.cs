@@ -31,18 +31,89 @@ namespace EthicalHackingSimulator
                 Console.Write(tag);
                 string input = Console.ReadLine();
 
+                //Prints the Simulation Help Menu
                 if (input == "help")
                     PrintHelp();
 
+                //Prints the IP addresses of the available targets
                 else if (input == "targets")
                     app.PrintTargets();
 
+                //Quits the simulation
                 else if (input == "quit")
                     Environment.Exit(0);
 
+                //Clears the console screen
                 else if (input == "clear")
                     Console.Clear();
 
+                //Initiates a Telnet connection on the target
+                else if (input.StartsWith("telnet"))
+                {
+                    bool invalidInput = false;
+                    char firstCharOfLastArguement = ' ';
+                    string[] telnetSplit = input.Split(splitDelimiters);
+                    string lastArguement = telnetSplit[telnetSplit.Length - 1];
+
+                    try
+                    {
+                        firstCharOfLastArguement = lastArguement[0];
+                    }
+                    catch(Exception)
+                    {
+                        invalidInput = true;
+                    }
+
+                    //If the input is invalid, print to screen
+                    if(invalidInput)
+                        Console.WriteLine("That is not a valid command.\n");
+
+                    //Prints the Telnet Help Menu
+                    else if(lastArguement == "-h")
+                    {
+                        var telnet = new Telnet();
+                        telnet.Help();
+                    }
+
+                    //If the first character of the last arguement is a number, execute
+                    else if(Char.IsDigit(firstCharOfLastArguement))
+                    {
+                        Target telnetTarget = app.FindTarget(lastArguement);
+                        var telnet = new Telnet(telnetTarget);
+
+                        telnet.Connect();
+                    }
+
+                    //Else the command is invalid
+                    else
+                        Console.WriteLine("That is not a valid command.\n");
+                }
+
+                //Ping Commands
+                else if(input.StartsWith("ping"))
+                {
+                    //TODO Implement Ping Scan
+                }
+
+                //Portscan Commands
+                else if(input.StartsWith("portscan"))
+                {
+                    //TODO Implement Portscan functionality
+                }
+
+                //ExploitDB Commands
+                else if(input.StartsWith("edb"))
+                {
+                    //TODO implement Exploit DB functionality
+                }
+
+                //Launches the Megasploit Framework
+                else if(input == "mscstart")
+                {
+                    //TODO Implement Megasploit Framework commands
+                }
+
+                //Else, command is invalid
                 else
                     Console.WriteLine("That is not a valid command.\n");
             }
@@ -51,7 +122,7 @@ namespace EthicalHackingSimulator
         public void PrintHelp()
         {
             //Telnet Info
-            string tnUsage = "Telnet: telnet {ip address} [port]\n";
+            string tnUsage = "Telnet: telnet {ip address}\n";
             string tnInfo = "Allows for remote access to the target destination.\n\n";
             string telnet = tnUsage + tnInfo;
 
