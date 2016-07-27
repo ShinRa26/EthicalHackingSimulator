@@ -193,31 +193,130 @@ namespace EthicalHackingSimulator
         //Prints out the Portscan results
         private void Output()
         {
+            Console.WriteLine("\nPort \t\tService \t\tStatus");
 
+            for(int i = 0; i < portStatus.Count; i++)
+            {
+                //If both dictionaries contain i as a key, then process the output
+                if (services.ContainsKey(i) && portStatus.ContainsKey(i))
+                {
+                    //Does not display closed ports
+                    if (portStatus[i] != "Closed")
+                    {
+                        //Fixes string formatting issues...
+                        if (i == 22 || i == 23 || i == 25 || i == 80)
+                            Console.WriteLine("{0}/tcp \t\t{1} \t\t\t{2}\n", i, services[i], portStatus[i]);
+                        else if (i >= 100)
+                            Console.WriteLine("{0}/tcp \t{1} \t\t{2}\n", i, services[i], portStatus[i]);
+                        else
+                            Console.WriteLine("{0}/tcp \t\t{1} \t\t{2}\n", i, services[i], portStatus[i]);
+                    }
+                }
+
+                //If neither dictionary contains the key, skip to the next iteration
+                else
+                    continue;
+            }
+
+            //By default, any ports not listed in the Services dictionary are said to be closed
+            Console.WriteLine("\nAll other ports are closed.\n");
         }
         
         //More detailed output
         public void VerboseFull()
         {
+            //Prints out the verbose scan text
+            TextForVerbose();
 
+            //Loops through the ports
+            for(int i = 0; i < portStatus.Count; i++)
+            {
+                //If the services and the portStatus dictionaries contain i as a key, execute
+                if(services.ContainsKey(i) && portStatus.ContainsKey(i))
+                {
+                    //If the port status is open, say the port has been discovered
+                    if(portStatus[i] == "Open")
+                    {
+                        Console.WriteLine("Discovered open port {0}/tcp on {1}", i, target.ipAddress);
+                        System.Threading.Thread.Sleep(500);
+                    }
+                }
+            }
         }   
         
         //Fragments the "packets" to discern if Filtered ports are Open/Closed
         private void Fragment()
         {
+            Random r = new Random();
 
+            Console.WriteLine("Fragmenting packets...");
+            System.Threading.Thread.Sleep(2000);
+
+            //Switches "Filtered" ports to "Open" or "closed" depending on the chance (50%)
+            for(int i = 0; i < portStatus.Count; i++)
+            {
+                if(portStatus[i] == "Filtered")
+                {
+                    int chance = r.Next(0, 2);
+
+                    if (chance == 0)
+                        portStatus[i] = "Open";
+                    else
+                        portStatus[i] = "Closed";
+                }
+            }            
         }  
         
         //gets the status and service of the given port
         private void IndividualPort(int p)
         {
+            TextForVerbose();
 
+            Console.WriteLine("Scanning port {0}...", p);
+            System.Threading.Thread.Sleep(1000);
+
+            if(!services.ContainsKey(p))
+            {
+                Console.WriteLine("\nPort \t\tService \t\tStatus");
+                Console.WriteLine("{0} \t\t{1} \t\t{2}\n\n", p, "No Service", portStatus[p]);
+            }
+
+            else
+            {
+                if(portStatus[p] != "Closed")
+                {
+                    Console.WriteLine("\nPort \t\tService \t\tStatus");
+
+                    //To fix string formatting issues...
+                    if(p == 22 || p == 23 || p == 25 || p == 80)
+                        Console.WriteLine("{0}/tcp \t\t{1} \t\t\t{2}\n", p, services[p], portStatus[p]);
+                    else if(p >= 100)
+                        Console.WriteLine("{0}/tcp \t{1} \t\t{2}\n", p, services[p], portStatus[p]);
+                    else
+                        Console.WriteLine("{0}/tcp \t\t{1} \t\t{2}\n", p, services[p], portStatus[p]);
+                }
+
+                //If the port is closed, display message
+                else
+                    Console.WriteLine("Port is closed. \n");
+            }
         }  
 
         //Method to contain the Verbose text (Used for VerboseFull() & IndividualPort() methods)
         private void TextForVerbose()
         {
+            Console.WriteLine("Initiating ARP Ping Scan on {0}", target.ipAddress);
+            System.Threading.Thread.Sleep(50);
+            Console.WriteLine("Completed ARP Ping Scan on{0}\n", target.ipAddress);
+            System.Threading.Thread.Sleep(100);
 
+            Console.WriteLine("Initiating Parallel DNS resolution of host: {0}", target.ipAddress);
+            System.Threading.Thread.Sleep(250);
+            Console.WriteLine("Completed Parallel DNS resolution of host: {0}", target.ipAddress);
+            System.Threading.Thread.Sleep(150);
+
+            Console.WriteLine("Initiating SYN Stealth Scan...");
+            System.Threading.Thread.Sleep(150);
         }
 
         //Prints out the help menu for the Portscan Module

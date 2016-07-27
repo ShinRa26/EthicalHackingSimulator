@@ -151,7 +151,7 @@ namespace EthicalHackingSimulator
                     pStatus[i] = "Closed";
             }
 
-            return ps;
+            return pStatus;
         }
 
         //Initiates the status of the Target (Online (Alive)/Offline(Dead))

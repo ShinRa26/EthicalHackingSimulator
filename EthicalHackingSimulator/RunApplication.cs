@@ -137,7 +137,48 @@ namespace EthicalHackingSimulator
                 //Portscan Commands
                 else if(input.StartsWith("portscan"))
                 {
-                    //TODO Implement Portscan functionality
+                    bool invalidInput = false; //Checks for invalid input
+
+                    //Splits the arguments passedto the Portscan module
+                    char firstCharacterOfLastArgument = ' ';
+                    string[] portscanSplit = input.Split(splitDelimiters);
+                    string lastArguement = portscanSplit[portscanSplit.Length - 1];
+
+                    //Tries to get the first haracter of the last arguement
+                    try
+                    {
+                        firstCharacterOfLastArgument = lastArguement[0];
+                    }
+                    catch(Exception)
+                    {
+                        //if no valid last arguement (i.e. a space), set invalidInput
+                        invalidInput = true;
+                    }
+
+                    //If invalidInput is true, print error to screen
+                    if(invalidInput)
+                        Console.WriteLine("That is not a valid command.\n");
+
+                    //If the last argument is -h, print the help menu for the Portscan module
+                    else if (lastArguement == "-h")
+                    {
+                        var ps = new Portscan();
+                        ps.Help();
+                    }
+
+                    //If the first character of the last argument is a number, then execute
+                    else if (Char.IsDigit(firstCharacterOfLastArgument))
+                    {
+                        Target psTarget = app.FindTarget(lastArguement);
+                        var ps = new Portscan(psTarget);
+
+                        string arguments = input.Substring(portscanSplit[0].Length + 1);
+                        ps.Scan(arguments);
+                    }
+
+                    //Else, the command is invalid
+                    else
+                        Console.WriteLine("That is not a valid command.\n");
                 }
 
                 //ExploitDB Commands
