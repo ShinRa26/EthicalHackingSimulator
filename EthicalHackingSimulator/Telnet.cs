@@ -35,7 +35,7 @@ namespace EthicalHackingSimulator
 
             else
             {
-                Console.WriteLine("Connecting...\n");
+                Console.WriteLine("Attempting Telnet Initialisation...\n");
                 System.Threading.Thread.Sleep(2000);
 
                 //Reads the given username
@@ -44,23 +44,50 @@ namespace EthicalHackingSimulator
 
                 //Reads the given password
                 Console.Write("Password: ");
-                string pWord = ReadPassword(); 
-                
+                string pWord = ReadPassword();
+
                 //If the target does not have a database, there are no login details for the target - will always fail to connect
-                if(db == null)
+                if (db == null)
+                {
+                    Console.WriteLine("Connecting...\n");
+                    System.Threading.Thread.Sleep(2000);
                     Console.WriteLine("Invalid username/password. \n");
+                }
 
                 /* If the target has a database, compares the given username/password to those in the database.
                  * If the username and password match, login will be successful, else will fail.
                  */
                 else
                 {
-                    //TODO Create TargetDB and compare values
+                    Console.WriteLine("Connecting...\n");
+                    System.Threading.Thread.Sleep(2000);
+
+                    //Local copy of the database table
+                    var table = db.table;
+
+                    //Boolean for finding the target
+                    bool found = false;
+
+                    //For each Key/Value pair in the table, compare the username to Key and password to the Value
+                    foreach(KeyValuePair<string,string> kvp in table)
+                    {
+                        //If a match, login successful, set remotelyConnected on target to True
+                        if(uName == kvp.Key && pWord == kvp.Value)
+                        {
+                            Console.WriteLine("Login Successfull!\n");
+                            target.remotelyConnected = true;
+                            found = true;
+                            break;
+                        }                        
+                    }
+
+                    if(!found)
+                        Console.WriteLine("Invalid username/password.\n");
                 }              
             }
         }
 
-        //Replaces password with *'s on screen and returns the value of the real password
+        //Replaces password with *'s on screen and returns the value of the real password (Gold plating tbh...)
         private string ReadPassword()
         {
             string password = "";

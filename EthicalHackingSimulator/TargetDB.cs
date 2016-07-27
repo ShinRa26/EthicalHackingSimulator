@@ -23,10 +23,17 @@ namespace EthicalHackingSimulator
             var usernames = Usernames();
             var passwords = Passwords();
 
+            for (int i = 0; i < usernames.Count; i++)            
+                t[usernames[i]] = passwords[i];
+            
+            foreach(KeyValuePair<string,string> kvp in t)
+                Console.WriteLine("Username: {0} Password: {1}", kvp.Key, kvp.Value);            
+
             return t;
         }
 
         //Sets up the List of Usernames to be used in the Database Table
+        //Could be replaced by UsernameCollection()...
         private List<string> Usernames()
         {
             var uNames = new List<string>();
@@ -39,6 +46,7 @@ namespace EthicalHackingSimulator
         }
 
         //Sets up the list of passwords to be used in the Database Table
+        //Could be replaced by PasswordCollection()...
         private List<string> Passwords()
         {
             var pWords = new List<string>();
@@ -93,7 +101,9 @@ namespace EthicalHackingSimulator
 
             //Randomly selects one of the above selections and returns it.
             int chance = r.Next(0, 4);
+            System.Threading.Thread.Sleep(25); //Necessary to fix output
 
+            //Return selected array based on value of chance
             if (chance == 0)
                 return choice1;
             else if (chance == 1)
@@ -145,8 +155,11 @@ namespace EthicalHackingSimulator
                 "SPARKUGGZ74"
             };
 
+            //Randomly selects one of the above selections and returns it.
             int chance = r.Next(0, 4);
+            System.Threading.Thread.Sleep(25); //Necessary to fix output
 
+            //Returns the selected array based on the value of chance
             if (chance == 0)
                 return choice1;
             else if (chance == 1)
