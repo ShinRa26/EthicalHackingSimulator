@@ -24,10 +24,7 @@ namespace EthicalHackingSimulator
             var passwords = Passwords();
 
             for (int i = 0; i < usernames.Count; i++)            
-                t[usernames[i]] = passwords[i];
-            
-            foreach(KeyValuePair<string,string> kvp in t)
-                Console.WriteLine("Username: {0} Password: {1}", kvp.Key, kvp.Value);            
+                t[usernames[i]] = passwords[i];                    
 
             return t;
         }

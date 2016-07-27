@@ -92,7 +92,46 @@ namespace EthicalHackingSimulator
                 //Ping Commands
                 else if(input.StartsWith("ping"))
                 {
-                    //TODO Implement Ping Scan
+                    bool invalidInput = false; //Checks for invalid input in the string
+
+                    //Splits the arguements passed to the Ping module
+                    char firstCharOfLastArguement = ' ';
+                    string[] pingSplit = input.Split(splitDelimiters);
+                    string lastArguement = pingSplit[pingSplit.Length - 1];
+
+                    //Tries to get the first character of the last arguement
+                    try
+                    {
+                        firstCharOfLastArguement = lastArguement[0];
+                    }
+                    catch(Exception)
+                    {
+                        invalidInput = true;
+                    }
+
+                    //If invalidInput is true, print error message
+                    if (invalidInput)
+                        Console.WriteLine("That is not a valid command.\n");
+
+                    //If the last arguement is "-h", print the help menu for the Ping module
+                    else if (lastArguement == "-h")
+                    {
+                        var ping = new Ping();
+                        ping.Help();
+                    }
+
+                    //If the first character of the last arguement is a number then parse for the Scan
+                    else if (Char.IsDigit(firstCharOfLastArguement))
+                    {
+                        Target pingTarget = app.FindTarget(lastArguement);
+                        var ping = new Ping(pingTarget);
+
+                        ping.Scan();
+                    }
+
+                    //Else, the command is invalid             
+                    else
+                        Console.WriteLine("That is not a valid command.\n");                       
                 }
 
                 //Portscan Commands

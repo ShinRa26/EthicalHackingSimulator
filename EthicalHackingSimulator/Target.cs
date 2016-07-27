@@ -32,8 +32,7 @@ namespace EthicalHackingSimulator
             //Specifies if the target is online/offline
             isAlive = InitiateAliveStatus();
 
-            //Creates the Database for the target
-            Console.WriteLine("Target IP: {0}", ipAddress);
+            //Creates the Database for the target            
             db = InitiateDatabase(portsAndServices);
 
             //Initialised as False as no connection has been made
