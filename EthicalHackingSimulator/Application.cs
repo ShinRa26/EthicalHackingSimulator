@@ -10,11 +10,14 @@ namespace EthicalHackingSimulator
     {
         public TargetList targets;
         private Target[] t;
+        public ExploitDB exploitDatabase;
 
         public Application()
         {
             targets = new TargetList(5);
             t = targets.targetList;
+
+            exploitDatabase = new ExploitDB();
         }
 
         //Prints the intro text for the application

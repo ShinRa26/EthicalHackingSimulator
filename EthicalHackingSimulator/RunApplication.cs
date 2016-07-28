@@ -188,20 +188,39 @@ namespace EthicalHackingSimulator
                     string[] edbSplit = input.Split(splitDelimiters);
                     string lastArguement = edbSplit[edbSplit.Length - 1];
 
+                    //Copy of ExploitDB
+                    var db = app.exploitDatabase;
+
                     //Prints the help menu for the ExploitDB module
                     if(lastArguement == "-h")
                     {
-                        //TODO Implement new form
+                        db.Help();
                     }
                     
                     else if(edbSplit[1] == "service")
                     {
-                        //TODO Implment new form
+                        try
+                        {
+                            string serviceName = edbSplit[2];
+                            db.SearchService(serviceName);
+                        }
+                        catch(Exception)
+                        {
+                            Console.WriteLine("That is not a valid command.\n");
+                        }
                     }
 
                     else if(edbSplit[1] == "exploit")
                     {
-                        //TODO Implement new form
+                        try
+                        {
+                            string exploitName = edbSplit[2];
+                            db.SearchExploit(exploitName);
+                        }
+                        catch(Exception)
+                        {
+                            Console.WriteLine("That is not a valid command.\n");
+                        }
                     }
                     //Else, the command is invalid
                     else
