@@ -20,7 +20,7 @@ namespace EthicalHackingSimulator
         //Prints the intro text for the application
         public void PrintIntro()
         {
-            //Console.WriteLine("INTRODUCTION!!");
+            targets.PrintList(); //TEMP
         }
 
         //Prints the IP Addresses of the available Targets

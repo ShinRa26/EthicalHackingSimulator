@@ -144,7 +144,7 @@ namespace EthicalHackingSimulator
                     string[] portscanSplit = input.Split(splitDelimiters);
                     string lastArguement = portscanSplit[portscanSplit.Length - 1];
 
-                    //Tries to get the first haracter of the last arguement
+                    //Tries to get the first character of the last arguement
                     try
                     {
                         firstCharacterOfLastArgument = lastArguement[0];
@@ -184,7 +184,28 @@ namespace EthicalHackingSimulator
                 //ExploitDB Commands
                 else if(input.StartsWith("edb"))
                 {
-                    //TODO implement Exploit DB functionality
+                    //Splits the arguements
+                    string[] edbSplit = input.Split(splitDelimiters);
+                    string lastArguement = edbSplit[edbSplit.Length - 1];
+
+                    //Prints the help menu for the ExploitDB module
+                    if(lastArguement == "-h")
+                    {
+                        //TODO Implement new form
+                    }
+                    
+                    else if(edbSplit[1] == "service")
+                    {
+                        //TODO Implment new form
+                    }
+
+                    else if(edbSplit[1] == "exploit")
+                    {
+                        //TODO Implement new form
+                    }
+                    //Else, the command is invalid
+                    else
+                        Console.WriteLine("That is not a valid command.\n");
                 }
 
                 //Launches the Megasploit Framework
