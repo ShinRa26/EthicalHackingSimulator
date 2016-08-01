@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Application.cs" />
     <Compile Include="ExploitDB.cs" />
+    <Compile Include="MegasploitFramework.cs" />
+    <Compile Include="MSModule_Exploit.cs" />
     <Compile Include="Ping.cs" />
     <Compile Include="Portscan.cs" />
     <Compile Include="Program.cs" />

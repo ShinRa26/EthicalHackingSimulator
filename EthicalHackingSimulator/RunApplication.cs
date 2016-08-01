@@ -41,7 +41,17 @@ namespace EthicalHackingSimulator
 
                 //Quits the simulation
                 else if (input == "quit")
-                    Environment.Exit(0);
+                {
+                    Console.Write("Are you sure you wish to quit the application? (y/n) ");
+                    string response = Console.ReadLine();
+
+                    if(response == "y" || response == "Y")
+                        Environment.Exit(0);
+                    else if(response == "n" || response == "N")
+                        Console.WriteLine();
+                    else
+                        Console.WriteLine("Didn't know it was that hard to type the letter Y or N but fine, be that way...\n");
+                }
 
                 //Clears the console screen
                 else if (input == "clear")
@@ -59,24 +69,24 @@ namespace EthicalHackingSimulator
                     {
                         firstCharOfLastArguement = lastArguement[0];
                     }
-                    catch(Exception)
+                    catch (Exception)
                     {
                         invalidInput = true;
                     }
 
                     //If the input is invalid, print to screen
-                    if(invalidInput)
+                    if (invalidInput)
                         Console.WriteLine("That is not a valid command.\n");
 
                     //Prints the Telnet Help Menu
-                    else if(lastArguement == "-h")
+                    else if (lastArguement == "-h")
                     {
                         var telnet = new Telnet();
                         telnet.Help();
                     }
 
                     //If the first character of the last arguement is a number, execute
-                    else if(Char.IsDigit(firstCharOfLastArguement))
+                    else if (Char.IsDigit(firstCharOfLastArguement))
                     {
                         Target telnetTarget = app.FindTarget(lastArguement);
                         var telnet = new Telnet(telnetTarget);
@@ -90,7 +100,7 @@ namespace EthicalHackingSimulator
                 }
 
                 //Ping Commands
-                else if(input.StartsWith("ping"))
+                else if (input.StartsWith("ping"))
                 {
                     bool invalidInput = false; //Checks for invalid input in the string
 
@@ -104,7 +114,7 @@ namespace EthicalHackingSimulator
                     {
                         firstCharOfLastArguement = lastArguement[0];
                     }
-                    catch(Exception)
+                    catch (Exception)
                     {
                         invalidInput = true;
                     }
@@ -131,11 +141,11 @@ namespace EthicalHackingSimulator
 
                     //Else, the command is invalid             
                     else
-                        Console.WriteLine("That is not a valid command.\n");                       
+                        Console.WriteLine("That is not a valid command.\n");
                 }
 
                 //Portscan Commands
-                else if(input.StartsWith("portscan"))
+                else if (input.StartsWith("portscan"))
                 {
                     bool invalidInput = false; //Checks for invalid input
 
@@ -149,14 +159,14 @@ namespace EthicalHackingSimulator
                     {
                         firstCharacterOfLastArgument = lastArguement[0];
                     }
-                    catch(Exception)
+                    catch (Exception)
                     {
                         //if no valid last arguement (i.e. a space), set invalidInput
                         invalidInput = true;
                     }
 
                     //If invalidInput is true, print error to screen
-                    if(invalidInput)
+                    if (invalidInput)
                         Console.WriteLine("That is not a valid command.\n");
 
                     //If the last argument is -h, print the help menu for the Portscan module
@@ -182,7 +192,7 @@ namespace EthicalHackingSimulator
                 }
 
                 //ExploitDB Commands
-                else if(input.StartsWith("edb"))
+                else if (input.StartsWith("edb"))
                 {
                     //Splits the arguements
                     string[] edbSplit = input.Split(splitDelimiters);
@@ -192,32 +202,32 @@ namespace EthicalHackingSimulator
                     var db = app.exploitDatabase;
 
                     //Prints the help menu for the ExploitDB module
-                    if(lastArguement == "-h")
+                    if (lastArguement == "-h")
                     {
                         db.Help();
                     }
-                    
-                    else if(edbSplit[1] == "service")
+
+                    else if (edbSplit[1] == "service")
                     {
                         try
                         {
                             string serviceName = edbSplit[2];
                             db.SearchService(serviceName);
                         }
-                        catch(Exception)
+                        catch (Exception)
                         {
                             Console.WriteLine("That is not a valid command.\n");
                         }
                     }
 
-                    else if(edbSplit[1] == "exploit")
+                    else if (edbSplit[1] == "exploit")
                     {
                         try
                         {
                             string exploitName = edbSplit[2];
                             db.SearchExploit(exploitName);
                         }
-                        catch(Exception)
+                        catch (Exception)
                         {
                             Console.WriteLine("That is not a valid command.\n");
                         }
@@ -228,9 +238,10 @@ namespace EthicalHackingSimulator
                 }
 
                 //Launches the Megasploit Framework
-                else if(input == "mscstart")
+                else if (input == "msf start")
                 {
-                    //TODO Implement Megasploit Framework commands
+                    var msf = new MegasploitFramework(app.targets);
+                    msf.Terminal();
                 }
 
                 //Else, command is invalid
@@ -262,7 +273,7 @@ namespace EthicalHackingSimulator
             string exploitDB = edbUsage + edbInfo;
 
             //Metasploit Info
-            string megaUsage1 = "Megasploit: msc start\n";
+            string megaUsage1 = "Megasploit Framework: msf start\n";
             string megaUsage2 = "Starts the Megasploit Framework console.\n";
             string megaInfo = "Used to create exploits for specific services to be uploaded to a target.\n";
             string megaInfo2 = "\t --For more information, Launch the framework and type 'help'\n\n";

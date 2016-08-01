@@ -28,5 +28,17 @@ namespace EthicalHackingSimulator
 
             Console.WriteLine();
         }
+
+        //Finds a specific target in the list
+        public Target FindTarget(string ip)
+        {
+            for (int i = 0; i < targetList.Length; i++)
+            {
+                if (ip == targetList[i].ipAddress)
+                    return targetList[i];
+
+            }
+            return null;
+        }
     }
 }
