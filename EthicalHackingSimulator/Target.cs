@@ -11,11 +11,12 @@ namespace EthicalHackingSimulator
         private const int MAX_IP = 255;
         private const int USABLE_PORTS = 34434;
         public TargetDB db;
-        public string ipAddress { get; set; }
-        public bool isAlive { get; set; }
-        public Dictionary<int, string> portsAndServices {get; set;}
-        public Dictionary<int, string> portStatus { get; set; }
+        public string ipAddress { get; private set; }
+        public bool isAlive { get; private set; }
+        public Dictionary<int, string> portsAndServices {get; private set;}
+        public Dictionary<int, string> portStatus { get; private set; }
         public bool remotelyConnected { get; set; }
+        public MSExploit deployedExploit { get; set; } //MAYBE
 
         public Target()
         {
@@ -37,6 +38,9 @@ namespace EthicalHackingSimulator
 
             //Initialised as False as no connection has been made
             remotelyConnected = false;
+
+            //No exploit deployed to target
+            deployedExploit = null; //MAYBE
         }
 
         //Generates an IP Address for the target.
