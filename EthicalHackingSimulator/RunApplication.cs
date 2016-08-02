@@ -240,7 +240,7 @@ namespace EthicalHackingSimulator
                 //Launches the Megasploit Framework
                 else if (input == "msf start")
                 {
-                    var msf = new MegasploitFramework(app.targets);
+                    var msf = new MegasploitFramework(app.targets, app.exploitDatabase);
                     msf.Terminal();
                 }
 

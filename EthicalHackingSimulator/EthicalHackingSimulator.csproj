@@ -46,6 +46,11 @@
     <Compile Include="Application.cs" />
     <Compile Include="ExploitDB.cs" />
     <Compile Include="MegasploitFramework.cs" />
+    <Compile Include="MSExploit.cs" />
+    <Compile Include="MSExploit_Buffer_Overflow.cs" />
+    <Compile Include="MSExploit_File_Upload.cs" />
+    <Compile Include="MSExploit_Reverse_Shell.cs" />
+    <Compile Include="MSExploit_SQL_Injection.cs" />
     <Compile Include="MSModule_Exploit.cs" />
     <Compile Include="Ping.cs" />
     <Compile Include="Portscan.cs" />

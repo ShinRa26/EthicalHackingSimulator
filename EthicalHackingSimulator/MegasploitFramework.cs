@@ -9,10 +9,12 @@ namespace EthicalHackingSimulator
     public class MegasploitFramework : ITerminal
     {
         private TargetList tList;
+        private ExploitDB exDB;
 
-        public MegasploitFramework(TargetList tl)
+        public MegasploitFramework(TargetList tl, ExploitDB exDB)
         {
             this.tList = tl;
+            this.exDB = exDB;
         }
 
         //The console that will be used for the framework
@@ -51,7 +53,7 @@ namespace EthicalHackingSimulator
                     //Loads the Exploit Module
                     if (args[1] == "exploit")
                     {
-                        var exModule = new MSModule_Exploit();
+                        var exModule = new MSModule_Exploit(exDB);
                         exModule.Terminal();
                     }
 

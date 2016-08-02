@@ -307,7 +307,7 @@ namespace EthicalHackingSimulator
         {
             Console.WriteLine("Initiating ARP Ping Scan on {0}", target.ipAddress);
             System.Threading.Thread.Sleep(50);
-            Console.WriteLine("Completed ARP Ping Scan on{0}\n", target.ipAddress);
+            Console.WriteLine("Completed ARP Ping Scan on {0}\n", target.ipAddress);
             System.Threading.Thread.Sleep(100);
 
             Console.WriteLine("Initiating Parallel DNS resolution of host: {0}", target.ipAddress);
