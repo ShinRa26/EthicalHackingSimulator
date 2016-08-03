@@ -53,7 +53,7 @@ namespace EthicalHackingSimulator
                     //Loads the Exploit Module
                     if (args[1] == "exploit")
                     {
-                        var exModule = new MSModule_Exploit(exDB);
+                        var exModule = new MSModule_Exploit(exDB, tList);
                         exModule.Terminal();
                     }
 

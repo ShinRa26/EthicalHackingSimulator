@@ -9,7 +9,7 @@ namespace EthicalHackingSimulator
     public class TargetDB
     {
         //TODO Maybe replace the Lists with the Arrays
-        public Dictionary<string, string> table { get; set; }
+        public Dictionary<string, string> table { get; private set; }
 
         public TargetDB()
         {
