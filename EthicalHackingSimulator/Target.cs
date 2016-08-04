@@ -142,13 +142,13 @@ namespace EthicalHackingSimulator
             {
                 if (ps.ContainsKey(i))
                 {
-                    int chance = r.Next(0, 3);
+                    int chance = r.Next(0, 6);
 
-                    if (chance == 0)
+                    if (chance == 0 || chance == 1 || chance == 2 || chance == 3)
                         pStatus[i] = "Open";
-                    else if (chance == 1)
+                    else if (chance == 4)
                         pStatus[i] = "Closed";
-                    else if (chance == 2)
+                    else if (chance == 5)
                         pStatus[i] = "Filtered";
                 }
                 else
