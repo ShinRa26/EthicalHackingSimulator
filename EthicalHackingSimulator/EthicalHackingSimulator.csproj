@@ -50,7 +50,6 @@
     <Compile Include="MSExploit_Buffer_Overflow.cs" />
     <Compile Include="MSExploit_File_Upload.cs" />
     <Compile Include="MSExploit_Heap_Overflow.cs" />
-    <Compile Include="MSExploit_Remote_Shellcode.cs" />
     <Compile Include="MSExploit_Reverse_Shell.cs" />
     <Compile Include="MSExploit_SQL_Injection.cs" />
     <Compile Include="MSModule_Exploit.cs" />
