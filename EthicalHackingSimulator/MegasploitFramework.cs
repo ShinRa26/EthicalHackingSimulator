@@ -10,11 +10,14 @@ namespace EthicalHackingSimulator
     {
         private TargetList tList;
         private ExploitDB exDB;
+        public MSModule_Exploit exModule { get; private set; }
+        public bool exitCondition { get; private set; }
 
         public MegasploitFramework(TargetList tl, ExploitDB exDB)
         {
             this.tList = tl;
             this.exDB = exDB;
+            exModule = null;
         }
 
         //The console that will be used for the framework
@@ -53,7 +56,7 @@ namespace EthicalHackingSimulator
                     //Loads the Exploit Module
                     if (args[1] == "exploit")
                     {
-                        var exModule = new MSModule_Exploit(exDB, tList);
+                        exModule = new MSModule_Exploit(exDB, tList);
                         exModule.Terminal();
                     }
 
@@ -71,6 +74,12 @@ namespace EthicalHackingSimulator
                 else
                 {
                     Console.WriteLine("That is not a valid command.\n");
+                }
+
+                if(exModule.exitCondition)
+                {
+                    exitCondition = true;
+                    break;
                 }
             }
         }

@@ -8,7 +8,7 @@ namespace EthicalHackingSimulator
 {
     public class Telnet
     {
-        private Target target;
+        public Target target;
         private TargetDB db;
         private bool invalidTarget;
 

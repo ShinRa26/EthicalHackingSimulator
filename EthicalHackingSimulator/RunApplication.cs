@@ -26,6 +26,10 @@ namespace EthicalHackingSimulator
             string tag = "root@HackSim:~# ";
             char[] splitDelimiters = { ' ' };
 
+            //For processing exit scenarios
+            MegasploitFramework msf = null;
+            bool successfulTelnet = false;
+
             while (true)
             {
                 Console.Write(tag);
@@ -45,9 +49,9 @@ namespace EthicalHackingSimulator
                     Console.Write("Are you sure you wish to quit the application? (y/n) ");
                     string response = Console.ReadLine();
 
-                    if(response == "y" || response == "Y")
+                    if (response == "y" || response == "Y")
                         Environment.Exit(0);
-                    else if(response == "n" || response == "N")
+                    else if (response == "n" || response == "N")
                         Console.WriteLine();
                     else
                         Console.WriteLine("Didn't know it was that hard to type the letter Y or N but fine, be that way...\n");
@@ -92,6 +96,8 @@ namespace EthicalHackingSimulator
                         var telnet = new Telnet(telnetTarget);
 
                         telnet.Connect();
+
+                        successfulTelnet = telnet.target.remotelyConnected;
                     }
 
                     //Else the command is invalid
@@ -240,16 +246,42 @@ namespace EthicalHackingSimulator
                 //Launches the Megasploit Framework
                 else if (input == "msf start")
                 {
-                    var msf = new MegasploitFramework(app.targets, app.exploitDatabase);
+                    msf = new MegasploitFramework(app.targets, app.exploitDatabase);
                     msf.Terminal();
                 }
 
                 //Else, command is invalid
                 else
+                {
                     Console.WriteLine("That is not a valid command.\n");
+                }
+
+                //Process Exit scenario if met
+                if(msf.exitCondition)
+                {
+                    ParseExploitForExitScenario(msf);
+                }
+                //Process telnet connection exit scenario if condition is met
+                else if(successfulTelnet)
+                {
+                    var telnetSuccessful = new ExitScenarios();
+                    telnetSuccessful.SQLInjectionScenario();
+                }
             }
         }
 
+        //Parses the exploit from the Megasploit framework and displays the appropriate scenario
+        private void ParseExploitForExitScenario(MegasploitFramework msf)
+        {
+            MSExploit exploit = msf.exModule.createdExploit;
+            string exName = exploit.name;
+            bool rootkit = exploit.optionalRootkit;            
+
+            var exitScenario = new ExitScenarios(exName, rootkit);
+            exitScenario.DisplayScenario();
+        }
+
+        //Help menu for app
         public void PrintHelp()
         {
             //Telnet Info
