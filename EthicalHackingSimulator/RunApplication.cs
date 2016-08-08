@@ -29,6 +29,7 @@ namespace EthicalHackingSimulator
             //For processing exit scenarios
             MegasploitFramework msf = null;
             bool successfulTelnet = false;
+            bool megasploitExitCondition = false;
 
             while (true)
             {
@@ -248,6 +249,8 @@ namespace EthicalHackingSimulator
                 {
                     msf = new MegasploitFramework(app.targets, app.exploitDatabase);
                     msf.Terminal();
+
+                    megasploitExitCondition = msf.exitCondition;
                 }
 
                 //Else, command is invalid
@@ -256,17 +259,20 @@ namespace EthicalHackingSimulator
                     Console.WriteLine("That is not a valid command.\n");
                 }
 
-                //Process Exit scenario if met
-                if(msf.exitCondition)
+
+                /*Process Exit scenario if met*/
+                
+                //If the megasploit framework condition is met, display exit scenario
+                if(megasploitExitCondition)
                 {
                     ParseExploitForExitScenario(msf);
                 }
                 //Process telnet connection exit scenario if condition is met
                 else if(successfulTelnet)
                 {
-                    var telnetSuccessful = new ExitScenarios();
-                    telnetSuccessful.SQLInjectionScenario();
-                }
+                    var sqlInjectionExit = new ExitScenarios();
+                    sqlInjectionExit.SQLInjectionScenario();
+                }                
             }
         }
 
