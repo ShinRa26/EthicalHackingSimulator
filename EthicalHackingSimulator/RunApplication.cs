@@ -266,14 +266,22 @@ namespace EthicalHackingSimulator
                 if(megasploitExitCondition)
                 {
                     ParseExploitForExitScenario(msf);
+                    break;
                 }
                 //Process telnet connection exit scenario if condition is met
                 else if(successfulTelnet)
                 {
                     var sqlInjectionExit = new ExitScenarios();
                     sqlInjectionExit.SQLInjectionScenario();
+                    break;
                 }                
             }
+        }
+
+        //Replay/Restart Simulation
+        private void RestartSimulation()
+        {
+            //TODO Implement
         }
 
         //Parses the exploit from the Megasploit framework and displays the appropriate scenario
