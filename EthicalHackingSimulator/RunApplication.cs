@@ -279,11 +279,9 @@ namespace EthicalHackingSimulator
         //Parses the exploit from the Megasploit framework and displays the appropriate scenario
         private void ParseExploitForExitScenario(MegasploitFramework msf)
         {
-            MSExploit exploit = msf.exModule.createdExploit;
-            string exName = exploit.name;
-            bool rootkit = exploit.optionalRootkit;            
+            MSExploit exploit = msf.exModule.createdExploit;                       
 
-            var exitScenario = new ExitScenarios(exName, rootkit);
+            var exitScenario = new ExitScenarios(exploit);
             exitScenario.DisplayScenario();
         }
 
