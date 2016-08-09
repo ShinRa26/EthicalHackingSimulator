@@ -51,11 +51,22 @@ namespace EthicalHackingSimulator
                     string response = Console.ReadLine();
 
                     if (response == "y" || response == "Y")
+                    {
+                        Console.WriteLine("Quitting Application...");
+                        System.Threading.Thread.Sleep(2000);
                         Environment.Exit(0);
+                    }
                     else if (response == "n" || response == "N")
                         Console.WriteLine();
                     else
                         Console.WriteLine("Didn't know it was that hard to type the letter Y or N but fine, be that way...\n");
+                }
+
+                //Restarts the simulation
+                else if(input == "restart")
+                {
+                    var restart = new ReplaySimulation();
+                    restart.RestartSimulation();
                 }
 
                 //Clears the console screen
@@ -260,7 +271,7 @@ namespace EthicalHackingSimulator
                 }
 
 
-                /*Process Exit scenario if met*/
+                /*Process Exit scenario if condition met*/
                 
                 //If the megasploit framework condition is met, display exit scenario
                 if(megasploitExitCondition)
@@ -276,12 +287,9 @@ namespace EthicalHackingSimulator
                     break;
                 }                
             }
-        }
-
-        //Replay/Restart Simulation
-        private void RestartSimulation()
-        {
-            //TODO Implement
+            //Ask the user is they wish to replay the simulation with new targets/exploits
+            var rerunSim = new ReplaySimulation();
+            rerunSim.RerunSimulation();
         }
 
         //Parses the exploit from the Megasploit framework and displays the appropriate scenario
