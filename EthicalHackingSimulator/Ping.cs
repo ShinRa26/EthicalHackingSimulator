@@ -91,7 +91,9 @@ namespace EthicalHackingSimulator
             string exInfo = "Note:\nThis is not an actual ping tool, it is only an emulation of what a ping tool on most computers will do.\n";
             string exInfo1 = "Most computers come pre-installed with a Ping tool. Check your OS documentation for more information.\n";
 
-            Console.WriteLine(p1 + pingUsage + pUsage1 + exInfo + exInfo1);
+            string ping = p1 + pingUsage + pUsage1 + exInfo + exInfo1;
+
+            Console.WriteLine(ping);
         }
     }
 }

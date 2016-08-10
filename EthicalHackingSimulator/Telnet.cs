@@ -123,7 +123,18 @@ namespace EthicalHackingSimulator
 
         public void Help()
         {
-            Console.WriteLine("Printing Help!");
+            string intro1 = "\nTelnet: Allows for the user to log in remotely to the machine.";
+
+            string usage1 = "\n\nUsage: ";
+            string usage2 = "telnet {target ip}\n\n";
+
+            string exInfo1 = "Note:\nThis is not an accurate representation of Telnet, this is just a simulation of a remote connection login via the terminal.\n";
+            string exInfo2 = "The real Telnet tool allows for remote access to the machine but through different means (the Telnet protocol) other than a username and password combination.\n";
+            string exInfo3 = "For more information on Telnet, please see Miccrosoft's own page: \"https://technet.microsoft.com/en-gb/library/bb491013.aspx\"";
+
+            string telnet = intro1 + usage1 + usage2 + exInfo1 + exInfo2 + exInfo3;
+
+            Console.WriteLine(telnet);
         }
     }
 }
