@@ -32,6 +32,7 @@ namespace EthicalHackingSimulator
             {
                 Console.Write(tag);
                 string input = Console.ReadLine();
+                bool exModuleExitCondition = false;
 
                 //Exits the framework
                 if (input == "exit")
@@ -47,6 +48,12 @@ namespace EthicalHackingSimulator
                     PrintHelp();
                 }
 
+                //Clears the console screen
+                else if(input == "clear")
+                {
+                    Console.Clear();
+                }
+
                 //Loads up a module
                 else if(input.StartsWith("module"))
                 {
@@ -58,6 +65,7 @@ namespace EthicalHackingSimulator
                     {
                         exModule = new MSModule_Exploit(exDB, tList);
                         exModule.Terminal();
+                        exModuleExitCondition = exModule.exitCondition;
                     }
 
                     //Additional modules can be added here in future works
@@ -76,7 +84,8 @@ namespace EthicalHackingSimulator
                     Console.WriteLine("That is not a valid command.\n");
                 }
 
-                if(exModule.exitCondition)
+                //Checks the exit condition of the exploit module
+                if(exModuleExitCondition)
                 {
                     exitCondition = true;
                     break;
@@ -107,12 +116,33 @@ namespace EthicalHackingSimulator
             string logo = logoPt1 + logoPt2 + logoPt3 + logoPt4 + logoPt5 + logoPt6;
 
             Console.WriteLine(logo);
+            Console.WriteLine("\t\t\tType help for more information!\n");
         }
 
         //Prints the help menu for the framework
         public void PrintHelp()
         {
-            Console.WriteLine("Printing help menu...");
+            //Title
+            string title = "Megasploit Framework Help Menu:\n\n";
+
+            //Module Activation
+            string mod1 = "Module launch: module {module name}\n";
+            string mod2 = "Launches a module in Megasploit Framework.\n\n";
+            string mod3 = "Module Names:\n";
+            string mod4 = "exploit -- Exploit module used in the creation and deployment of exploits.\n\n";
+
+            string module = mod1 + mod2 + mod3 + mod4;
+
+            //Exit the framework
+            string exit = "To exit the framework and go back to the main console, type 'exit'\n\n";
+
+            //Clears the console
+            string clear = "To clear the console, type 'clear'\n\n";
+
+            //Displays the help menu
+            string help = title + module + exit + clear;
+            Console.WriteLine();
+            Console.WriteLine(help);
         }
     }
 }

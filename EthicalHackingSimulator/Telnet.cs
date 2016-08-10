@@ -130,7 +130,7 @@ namespace EthicalHackingSimulator
 
             string exInfo1 = "Note:\nThis is not an accurate representation of Telnet, this is just a simulation of a remote connection login via the terminal.\n";
             string exInfo2 = "The real Telnet tool allows for remote access to the machine but through different means (the Telnet protocol) other than a username and password combination.\n";
-            string exInfo3 = "For more information on Telnet, please see Miccrosoft's own page: \"https://technet.microsoft.com/en-gb/library/bb491013.aspx\"";
+            string exInfo3 = "For more information on Telnet, please see Miccrosoft's own page: \"https://technet.microsoft.com/en-gb/library/bb491013.aspx\"\n";
 
             string telnet = intro1 + usage1 + usage2 + exInfo1 + exInfo2 + exInfo3;
 

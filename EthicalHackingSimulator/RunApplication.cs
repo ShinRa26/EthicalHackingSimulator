@@ -304,6 +304,9 @@ namespace EthicalHackingSimulator
         //Help menu for app
         public void PrintHelp()
         {
+            //Title
+            string title = "\nHelp Menu:\n";
+
             //Telnet Info
             string tnUsage = "Telnet: telnet {ip address}\n";
             string tnInfo = "Allows for remote access to the target destination.\n\n";
@@ -331,12 +334,19 @@ namespace EthicalHackingSimulator
             string megaInfo2 = "\t --For more information, Launch the framework and type 'help'\n\n";
             string megasploit = megaUsage1 + megaUsage2 + megaInfo + megaInfo2;
 
+            //Clears the console screen
             string clear = "To clear the screen, type 'clear'\n\n";
+
             //Exit Info
             string exit = "To exit the application, type 'quit'\n\n";
 
+            //Asks the user if they wish to restart the simulation
+            string restart = "To restart the simulation with new targets and explotis, type 'restart'\n\n";
+
             Console.WriteLine();
-            Console.WriteLine(telnet + ping + portscan + exploitDB + megasploit + clear + exit);
+            string help = title + telnet + ping + portscan + exploitDB + megasploit + clear + exit + restart;
+
+            Console.WriteLine(help);
         }
     }
 }
