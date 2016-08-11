@@ -23,7 +23,7 @@ namespace EthicalHackingSimulator
             this.ipAddress = GenerateIP();
             System.Threading.Thread.Sleep(25);
 
-            //Generates the ports and services for the Target
+            //Generates the ports and services for the Target.
             portsAndServices = new Dictionary<int, string>();
             GeneratePortsAndServices(portsAndServices);
 

@@ -20,7 +20,7 @@ namespace EthicalHackingSimulator
             exploitDatabase = new ExploitDB();
         }
 
-        //Prints the intro text for the application
+        //Prints the intro text for the application.
         public void PrintIntro()
         {
             string title = "\t\t\tWelcome to the Ethical Hacking Simulator!\n\n";

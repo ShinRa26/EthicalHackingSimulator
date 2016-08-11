@@ -16,7 +16,7 @@ namespace EthicalHackingSimulator
             table = InitiateTable();
         }
 
-        //Creates the Database table
+        //Creates the Database table.
         private Dictionary<string, string> InitiateTable()
         {
             var t = new Dictionary<string, string>();

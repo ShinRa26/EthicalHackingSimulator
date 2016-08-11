@@ -23,7 +23,7 @@ namespace EthicalHackingSimulator
             this.exRootkit = exploit.optionalRootkit;
         }
 
-        //Displays the appropriate scenario depending on which type of exploit was used
+        //Displays the appropriate scenario depending on which type of exploit was used.
         public void DisplayScenario()
         {
             if (exName == "Buffer_Overflow")

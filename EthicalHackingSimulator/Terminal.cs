@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EthicalHackingSimulator
 {
+    //For the classes which implement a console
     public interface ITerminal
     {
         void Terminal();

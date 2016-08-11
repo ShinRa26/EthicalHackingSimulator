@@ -94,7 +94,7 @@ namespace EthicalHackingSimulator
         }
 
 
-        //Prints the initiation text
+        //Prints the initiation text.
         private void InitText()
         {
             Console.WriteLine("\nLoading Megasploit Framework...\n");
@@ -127,7 +127,7 @@ namespace EthicalHackingSimulator
 
             //Module Activation
             string mod1 = "Module launch: module {module name}\n";
-            string mod2 = "Launches a module in Megasploit Framework.\n\n";
+            string mod2 = "Launches a module in Megasploit Framework (Case Sensitive).\n\n";
             string mod3 = "Module Names:\n";
             string mod4 = "exploit -- Exploit module used in the creation and deployment of exploits.\n\n";
 

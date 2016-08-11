@@ -18,7 +18,7 @@ namespace EthicalHackingSimulator
         //Default Constructor
         public Portscan() {}
 
-        //Constructor for scanning the target
+        //Constructor for scanning the target.
         public Portscan(Target t)
         {
             try

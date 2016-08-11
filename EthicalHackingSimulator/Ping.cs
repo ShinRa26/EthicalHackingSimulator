@@ -13,7 +13,7 @@ namespace EthicalHackingSimulator
 
         private bool invalidTarget;
 
-        //Default Constructor
+        //Default Constructor.
         public Ping(){}
 
         //Constructor for scanning the target

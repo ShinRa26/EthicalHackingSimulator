@@ -13,7 +13,7 @@ namespace EthicalHackingSimulator
             //Empty
         }
 
-        //Restarting the simulation
+        //Restarting the simulation.
         public void RestartSimulation()
         {
             Console.Write("Do you wish to restart the simulation? All progress will be lost and new targets/exploits will be created. (y/n) ");

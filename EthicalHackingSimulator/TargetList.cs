@@ -18,7 +18,7 @@ namespace EthicalHackingSimulator
                 targetList[i] = new Target();        
         }
 
-        //Prints the list of IP Addresses assiciated with the Targets
+        //Prints the list of IP Addresses assiciated with the Targets.
         public void PrintList()
         {
             Console.WriteLine();

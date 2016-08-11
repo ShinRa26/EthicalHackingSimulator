@@ -28,6 +28,7 @@ namespace EthicalHackingSimulator
             }
         }
 
+        //Initiates a connection to the target IP
         public void Connect()
         {
             if(invalidTarget)
@@ -120,7 +121,7 @@ namespace EthicalHackingSimulator
             return password;
         }
 
-
+        //Help Menu
         public void Help()
         {
             string intro1 = "\nTelnet: Allows for the user to log in remotely to the machine.";

@@ -337,7 +337,7 @@ namespace EthicalHackingSimulator
             //Print Target List
             string list = "To print the list of targets, type 'targets'\n\n";
 
-            //Clears the console screen
+            //Clears the console screen.
             string clear = "To clear the screen, type 'clear'\n\n";
 
             //Exit Info
