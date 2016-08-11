@@ -334,6 +334,9 @@ namespace EthicalHackingSimulator
             string megaInfo2 = "\t --For more information, Launch the framework and type 'help'\n\n";
             string megasploit = megaUsage1 + megaUsage2 + megaInfo + megaInfo2;
 
+            //Print Target List
+            string list = "To print the list of targets, type 'targets'\n\n";
+
             //Clears the console screen
             string clear = "To clear the screen, type 'clear'\n\n";
 
@@ -344,7 +347,7 @@ namespace EthicalHackingSimulator
             string restart = "To restart the simulation with new targets and explotis, type 'restart'\n\n";
 
             Console.WriteLine();
-            string help = title + telnet + ping + portscan + exploitDB + megasploit + clear + exit + restart;
+            string help = title + telnet + ping + portscan + exploitDB + megasploit + list + clear + exit + restart;
 
             Console.WriteLine(help);
         }

@@ -9,9 +9,9 @@ namespace EthicalHackingSimulator
     public class Program
     {
         public static void Main(string[] args)
-        {
+        {            
             var runApp = new RunApplication();
-            runApp.StartApp();
+            runApp.StartApp();                        
         }
     }
 }
