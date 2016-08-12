@@ -334,7 +334,7 @@ namespace EthicalHackingSimulator
             string filtered = "Filtered: Port is being filtered by a firewall. Actual status (Open/Closed) unknown.\n";
             string portStatus = ports + open + closed + filtered;
 
-            string args = "\nArguements:\n";
+            string args = "\nOptions:\n";
             string arg1 = "-v: Verbose output. Gives a breakdown of what the scan is actually doing.\n";
             string arg2 = "-f: Fragment Packets: Fragments the packets being sent to the ports. Used to determine a filtered port's status.\n";
             string arg3 = "-p {Port Number}: Performs the portscan on the specific port given and no others.\n";

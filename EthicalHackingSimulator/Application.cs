@@ -24,14 +24,16 @@ namespace EthicalHackingSimulator
         public void PrintIntro()
         {
             string title = "\t\t\tWelcome to the Ethical Hacking Simulator!\n\n";
-            string intro1 = "You are an employee of a security firm and have been contracted by a firm to test their security.\n";
+            string intro1 = "You are an employee of a security firm and have been contracted to test a client's cyber security.\n";
             string intro2 = "They have asked you to use your skills as a penetration tester to find potential weaknesses in their security.\n";
             string intro3 = "After a few months of reconaissance, you have identified "+ t.Length + " potential targets within the firm.\n";
             string intro4 = "Your task is find, create, and deploy an exploit onto a target. This will be enough for the firm to address any security flaws you have found.\n\n";
 
             string ipAddresses = IntroTargets();
 
-            string introFull = title + intro1 + intro2 + intro3 + intro4 + ipAddresses;
+            string helpAndTip = "Type 'help' for a list of the tools that can be used in this simulation.\nTip: Try using the portscanner on a target to discover what services are running on it.\n";
+
+            string introFull = title + intro1 + intro2 + intro3 + intro4 + ipAddresses + helpAndTip;
 
             Console.WriteLine(introFull);
             
