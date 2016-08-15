@@ -309,8 +309,9 @@ namespace EthicalHackingSimulator
 
             //Telnet Info
             string tnUsage = "Telnet: telnet {ip address}\n";
-            string tnInfo = "Allows for remote access to the target destination.\n\n";
-            string telnet = tnUsage + tnInfo;
+            string tnInfo = "Allows for remote access to the target destination.\n";
+            string tnHelp = "\t --For more information, type 'telnet -h'\n\n";
+            string telnet = tnUsage + tnInfo + tnHelp;
 
             //PortScan Info
             string psUsage = "Portscan: portscan [Option(s)] {target}\n";
@@ -344,12 +345,13 @@ namespace EthicalHackingSimulator
             string exit = "To exit the application, type 'quit'\n\n";
 
             //Asks the user if they wish to restart the simulation
-            string restart = "To restart the simulation with new targets and explotis, type 'restart'\n\n";
+            string restart = "To restart the simulation with new targets and explotis, type 'restart'\n";
 
             Console.WriteLine();
             string help = title + telnet + ping + portscan + exploitDB + megasploit + list + clear + exit + restart;
 
             Console.WriteLine(help);
+            app.PrintTargets();
         }
     }
 }
