@@ -334,7 +334,7 @@ namespace EthicalHackingSimulator
             string filtered = "Filtered: Port is being filtered by a firewall. Actual status (Open/Closed) unknown.\n";
             string portStatus = ports + open + closed + filtered;
 
-            string args = "\nOptions:\n";
+            string args = "\nOptions (Optional):\n";
             string arg1 = "-v: Verbose output. Gives a breakdown of what the scan is actually doing.\n";
             string arg2 = "-f: Fragment Packets: Fragments the packets being sent to the ports. Used to determine a filtered port's status.\n";
             string arg3 = "-p {Port Number}: Performs the portscan on the specific port given and no others.\n";
@@ -346,7 +346,9 @@ namespace EthicalHackingSimulator
             string ex3 = "NMap Website: https://nmap.org\n";
             string extraInfo = exInfo + ex1 + ex2 + ex3;
 
-            string help = intro + usage + portStatus + arguements + extraInfo;
+            string reminder = "\nREMEMBER! Keep note of Target IP addresses, Service of Interest and their port numbers! These will come in handy later!\n\n";
+
+            string help = intro + usage + portStatus + arguements + extraInfo + reminder;
 
             Console.WriteLine(help);
         }

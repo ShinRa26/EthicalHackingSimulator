@@ -315,7 +315,7 @@ namespace EthicalHackingSimulator
 
             //PortScan Info
             string psUsage = "Portscan: portscan [Option(s)] {target}\n";
-            string psInfo = "Used to scan the ports on the target to assess services prone to vulnerabilities.\n\t --For more information, type 'portscan -h'\n\n";
+            string psInfo = "Used to scan the ports on the target to assess services prone to vulnerabilities. Options are not necessary.\n\t --For more information, type 'portscan -h'\n\n";
             string portscan = psUsage + psInfo;
 
             //Ping Info
