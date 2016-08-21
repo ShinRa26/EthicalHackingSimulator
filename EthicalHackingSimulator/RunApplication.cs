@@ -325,7 +325,7 @@ namespace EthicalHackingSimulator
 
             //ExploitDB Info
             string edbUsage = "ExploitDB: edb [Option(s)] {service}\n";
-            string edbInfo = "Scans the service for available exploits.\n\t --For more information, type 'edb -h'\n\n";
+            string edbInfo = "Scans the service/exploit for available exploits/services.\n\t --For more information, type 'edb -h'\n\n";
             string exploitDB = edbUsage + edbInfo;
 
             //Metasploit Info
