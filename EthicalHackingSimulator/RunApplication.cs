@@ -8,7 +8,7 @@ namespace EthicalHackingSimulator
 {
     public class RunApplication : ITerminal
     {
-        private Application app;
+        private Application app;        
 
         public RunApplication()
         {
