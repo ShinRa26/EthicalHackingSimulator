@@ -308,23 +308,23 @@ namespace EthicalHackingSimulator
             string title = "\nHelp Menu:\n";
 
             //Telnet Info
-            string tnUsage = "Telnet: telnet {ip address}\n";
+            string tnUsage = "Telnet: telnet ipaddress\n";
             string tnInfo = "Allows for remote access to the target destination.\n";
             string tnHelp = "\t --For more information, type 'telnet -h'\n\n";
             string telnet = tnUsage + tnInfo + tnHelp;
 
             //PortScan Info
-            string psUsage = "Portscan: portscan [Option(s)] {target}\n";
+            string psUsage = "Portscan: portscan Option(s) ipaddress\n";
             string psInfo = "Used to scan the ports on the target to assess services prone to vulnerabilities. Options are not necessary.\n\t --For more information, type 'portscan -h'\n\n";
             string portscan = psUsage + psInfo;
 
             //Ping Info
-            string pgUsage = "Ping: ping {target}\n";
+            string pgUsage = "Ping: ping ipaddress\n";
             string pgInfo = "Sends a signal to the target to determine if it is alive or not.\n\n";
             string ping = pgUsage + pgInfo;
 
             //ExploitDB Info
-            string edbUsage = "ExploitDB: edb [Option(s)] {service}\n";
+            string edbUsage = "ExploitDB: edb Option(s) service/exploit\n";
             string edbInfo = "Scans the service/exploit for available exploits/services.\n\t --For more information, type 'edb -h'\n\n";
             string exploitDB = edbUsage + edbInfo;
 

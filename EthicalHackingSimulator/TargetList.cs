@@ -22,9 +22,9 @@ namespace EthicalHackingSimulator
         public void PrintList()
         {
             Console.WriteLine();
-            Console.WriteLine("List of available targets: ");
+            Console.WriteLine("List of available target ip addresses: ");
             for(int i = 0; i < targetList.Length; i++)
-                Console.WriteLine("Target " + (i + 1) + ": " + targetList[i].ipAddress);
+                Console.WriteLine(targetList[i].ipAddress);
 
             Console.WriteLine();
         }
