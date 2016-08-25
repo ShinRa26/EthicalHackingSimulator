@@ -53,7 +53,7 @@ namespace EthicalHackingSimulator
         private void BufferOverflowScenario(bool rootkit)
         {
             string base1 = "You have chosen to exploit the target by using a Buffer Overflow. This takes advantage of the Stack, an area of memory utilised by the program, to point the program to your malicious shellcode.\n";
-            string base2 = "By corrupting the memory locations in the stack with No-Op machine code - code which means do nothing - this causes the program to continuely execute thee commands until a \"Jump\" instruction is met.\n";
+            string base2 = "By corrupting the memory locations in the stack with No-Op machine code - code which means do nothing - this causes the program to continuely execute these commands until a \"Jump\" instruction is met.\n";
             string base3 = "By guessing the location of the return address in the code, the jump instruction \"jumped\" over this and continued to execute the No Op codes until it met yet another Jump instruction.\n";
             string base4 = "The final jump instruction causes the program to jump right into the malicious shellcode that was created. Depending on what the shellcode does, this could have disasterous consequences!\n";
             string base5 = "In this case, you've caused the program to crash entirely, rendering it useless.\n";
