@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace EthicalHackingSimulator
 {
+    /// <summary>
+    /// This class holds all the exit scenarios that will be displayed to the user upon finishing the simulation.
+    /// Depending on the exploit they used, a different scenario will be displayed.
+    /// </summary>
     public class ExitScenarios
     {
         private MSExploit exploit { get; set; }

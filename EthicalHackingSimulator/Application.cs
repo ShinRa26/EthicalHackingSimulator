@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace EthicalHackingSimulator
 {
+    /// <summary>
+    /// Class to initialise the Simulation's data.
+    /// Creates a list of targets and instantiates the ExploitDB
+    /// </summary>
     public class Application
     {
         public TargetList targets;
         private Target[] t;
         public ExploitDB exploitDatabase;
-
+         
+        //Constructor - Creates 5 targets and instantiates the ExploitDB class        
         public Application()
         {
             targets = new TargetList(5);

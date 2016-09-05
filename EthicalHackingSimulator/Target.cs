@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace EthicalHackingSimulator
 {
+    /// <summary>
+    /// Class to represent a Target.
+    /// Holds all the necessar information such as Services, Port numbers, IP Address etc.
+    /// </summary>
     public class Target
     {
         private const int MAX_IP = 255;
@@ -18,10 +22,12 @@ namespace EthicalHackingSimulator
         public bool remotelyConnected { get; set; }
         public MSExploit deployedExploit { get; set; } //MAYBE
 
+        //Constructor
         public Target()
         {
+            //Generates the IP Address
             this.ipAddress = GenerateIP();
-            System.Threading.Thread.Sleep(25);
+            System.Threading.Thread.Sleep(25); //Without this, output is incorrect for a target (No idea why...)
 
             //Generates the ports and services for the Target.
             portsAndServices = new Dictionary<int, string>();
@@ -177,6 +183,7 @@ namespace EthicalHackingSimulator
         //Initialises a "database" for the target if certain services are present on the target.
         private TargetDB InitiateDatabase(Dictionary<int, string> ps)
         {
+            //If the Target's services contain "MySQL_Database", create a TargetDB object for the Target.
             for(int i = 0; i < USABLE_PORTS; i++)
             {
                 if (ps.ContainsKey(i) && ps[i] == "MySQL_Database")

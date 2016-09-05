@@ -6,20 +6,27 @@ using System.Threading.Tasks;
 
 namespace EthicalHackingSimulator
 {
+    /// <summary>
+    /// This class holds the main "console" the user interacts with.
+    /// Depending on user input, various objects are created e.g. Ping, Portscan etc.
+    /// </summary>
     public class RunApplication : ITerminal
     {
         private Application app;        
 
+        //Constructor
         public RunApplication()
         {
             app = new Application();
         }
 
+        //Starts the simulation
         public void StartApp()
         {
             Terminal();
         }
 
+        //The Main console the user interacts with
         public void Terminal()
         {
             app.PrintIntro();
@@ -225,6 +232,7 @@ namespace EthicalHackingSimulator
                         db.Help();
                     }
 
+                    //If the second arguement is service, search the ExploitDB for vulnerabilities
                     else if (edbSplit[1] == "service")
                     {
                         try
@@ -238,6 +246,7 @@ namespace EthicalHackingSimulator
                         }
                     }
 
+                    //If the second arguement is exploit, search the ExploitDB for vulnerable services.
                     else if (edbSplit[1] == "exploit")
                     {
                         try

@@ -6,16 +6,24 @@ using System.Threading.Tasks;
 
 namespace EthicalHackingSimulator
 {
+    /// <summary>
+    /// This class simulates Telnet functionality.
+    /// The user attempts to "connect" to a target, supplying a username and password.
+    /// If successful, the user has logged in.
+    /// </summary>
     public class Telnet
     {
         public Target target;
         private TargetDB db;
         private bool invalidTarget;
 
+        //Default Constructor
         public Telnet(){}
-
+        
+        //Constructor
         public Telnet(Target t)
         {
+            //Attempts to parse the target
             try
             {
                 this.target = t;

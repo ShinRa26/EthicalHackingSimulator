@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace EthicalHackingSimulator
 {
+    /// <summary>
+    /// This class represents a simulated Ping tool.
+    /// The user pings a target to determine if they are online or not
+    /// </summary>
     public class Ping
     {
         private Target target;

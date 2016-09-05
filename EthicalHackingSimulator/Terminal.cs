@@ -9,7 +9,7 @@ namespace EthicalHackingSimulator
     //For the classes which implement a console
     public interface ITerminal
     {
-        void Terminal();
-        void PrintHelp();
+        void Terminal(); //Represents the "console"
+        void PrintHelp(); //Help Menu
     }
 }

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace EthicalHackingSimulator
 {
+    /// <summary>
+    /// Class to replay the simulation
+    /// Launches another instance of RunApplication.
+    /// </summary>
     public class ReplaySimulation
     {        
         public ReplaySimulation()

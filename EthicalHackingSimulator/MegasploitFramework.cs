@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace EthicalHackingSimulator
 {
+    /// <summary>
+    /// This class simulates an exploitation framework.
+    /// It launches its own console that the user interacts with.
+    /// </summary>
     public class MegasploitFramework : ITerminal
     {
         private TargetList tList;
@@ -23,6 +27,7 @@ namespace EthicalHackingSimulator
         //The console that will be used for the framework
         public void Terminal()
         {
+            //Displays the initialisation text.
             InitText();
 
             string tag = "msf > ";

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace EthicalHackingSimulator
 {
+    /// <summary>
+    /// This class simulates a port scanning tool.
+    /// The user attempts to scan a target to determine: Running services, Port Numbers, and the status of the port (Open/Closed/Filtered)
+    /// </summary>
     public class Portscan
     {
         private Target target;

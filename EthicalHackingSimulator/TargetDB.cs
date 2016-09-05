@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace EthicalHackingSimulator
 {
+    /// <summary>
+    /// Class to represent a Database being held on a Target.
+    /// Information held here is used to connect to the target via Telnet.
+    /// </summary>
     public class TargetDB
     {
         //TODO Maybe replace the Lists with the Arrays
         public Dictionary<string, string> table { get; private set; }
 
+        //Constructor
         public TargetDB()
         {
             table = InitiateTable();
@@ -30,7 +35,6 @@ namespace EthicalHackingSimulator
         }
 
         //Sets up the List of Usernames to be used in the Database Table
-        //Could be replaced by UsernameCollection()...
         private List<string> Usernames()
         {
             var uNames = new List<string>();
@@ -43,7 +47,6 @@ namespace EthicalHackingSimulator
         }
 
         //Sets up the list of passwords to be used in the Database Table
-        //Could be replaced by PasswordCollection()...
         private List<string> Passwords()
         {
             var pWords = new List<string>();
